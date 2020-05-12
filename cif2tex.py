@@ -66,7 +66,7 @@ def atom_tables(filename, structure):
   with open(filename+"_atom_anis.tex", "w") as myfile:
     myfile.write(data_anis.to_latex(index=False))
     
-  if __name__ == '__main__':
-    ciftable_tex(sys.argv[2], structure(sys.argv[2]))
-    atom_tables(sys.argv[2], structure(sys.argv[2]))
+if __name__ == '__main__':
+	ciftable_tex(sys.argv[2], structure(sys.argv[2]))
+	atom_tables(sys.argv[2], structure(sys.argv[2]))
 
