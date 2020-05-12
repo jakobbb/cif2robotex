@@ -1,7 +1,4 @@
-from pymatgen.io.cif import CifParser
-from pymatgen import Structur
-import sys, getopt
-import pandas as pd
+
 
 def cif_import(filename):
   parser = CifParser(filename + ".cif")
@@ -41,7 +38,7 @@ def ciftable_tex(filename, structure):
     myfile.write("Final R indexes {[}I$geq$2$\\sigma$ (I){]} & R$_1$ = "+ structure["_refine_ls_R_factor_gt"]+ ", wR$_2$ = "+ structure["_refine_ls_wR_factor_gt"] + "\\\ \n")
     myfile.write("Final R indexes {[}all data{]}               & R$_1$ = "+ structure["_refine_ls_R_factor_all"]+ ", wR$_2$ = "+ structure["_refine_ls_wR_factor_ref"] + " \\\ \n")
     myfile.write("Largest diff. peak/hole / e \AA$^-3$            & "+ structure["_refine_diff_density_max"] + "/ "+ structure["_refine_diff_density_min"] +" \\* \\bottomrule \n")
-    myfile.write("\\end{longtable}"
+    myfile.write("\\end{longtable}")
 
 def atom_tables(filename, structure):
   atom_label = structure["_atom_site_label"]
@@ -65,8 +62,13 @@ def atom_tables(filename, structure):
 
   with open(filename+"_atom_anis.tex", "w") as myfile:
     myfile.write(data_anis.to_latex(index=False))
+
     
 if __name__ == '__main__':
-	ciftable_tex(sys.argv[2], structure(sys.argv[2]))
-	atom_tables(sys.argv[2], structure(sys.argv[2]))
+  from pymatgen.io.cif import CifParser
+  from pymatgen import Structur
+  import sys, getopt
+  import pandas as pd
+  ciftable_tex(sys.argv[2], structure(sys.argv[2]))
+  atom_tables(sys.argv[2], structure(sys.argv[2]))
 
