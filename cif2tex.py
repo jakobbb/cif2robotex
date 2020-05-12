@@ -67,6 +67,6 @@ def atom_tables(filename, structure):
     myfile.write(data_anis.to_latex(index=False))
     
   if __name__ == '__main__':
-    ciftable_tex(filename, structure)
-    atom_tables(filename, structure)
+    ciftable_tex(filename, structure(filename))
+    atom_tables(filename, structure(filename))
 
