@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 
 def cif_import(filename):
   parser = CifParser(filename + ".cif")
@@ -63,7 +63,7 @@ def atom_tables(filename, structure):
   with open(filename+"_atom_anis.tex", "w") as myfile:
     myfile.write(data_anis.to_latex(index=False))
 
-    
+
 if __name__ == '__main__':
   from pymatgen.io.cif import CifParser
   from pymatgen import Structur
@@ -71,4 +71,3 @@ if __name__ == '__main__':
   import pandas as pd
   ciftable_tex(sys.argv[2], structure(sys.argv[2]))
   atom_tables(sys.argv[2], structure(sys.argv[2]))
-
